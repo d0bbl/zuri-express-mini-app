@@ -8,7 +8,7 @@ router.get("/", async (req, res) => {
     const users = await User.find().sort({createdAt: -1}).lean();
     if (users == "") {
       return res.status(404).json({
-        message: "You are yet to create a profile",
+        message: "You are yet to create data",
         request: {
           type: "POST",
           url: "http://localhost:3000/create"
@@ -16,8 +16,7 @@ router.get("/", async (req, res) => {
       });
     }
     res.status(200).json({
-      count: users.length,
-      details: users.map(user => {
+      data: users.map(user => {
         return {
           id: user._id,
           name: user.name,
@@ -50,7 +49,7 @@ router.post(`/`, async (req, res) => {
           });
           await user.save();
           res.status(201).json({
-            message: `Profile successfully created on ${user.createdAt}`,
+            message: `Data successfully created on ${user.createdAt}`,
             data: {
               id: user._id,
               name: user.name,
@@ -79,7 +78,8 @@ router.get("/:id", async (req, res) => {
       return res.status(404).json({message: "No valid user found"});
     }
     return res.status(200).json({
-      profile: {
+      message: "Data fetched successfully",
+      data: {
         name: user.name,
         email: user.email,
         country: user.country
@@ -102,8 +102,8 @@ router.put("/:id", async (req, res) => {
      return res.status(400).json({ message: "failed to update profile!" });
     }
     return res.status(200).json({
-      message: `Profile successfully updated on ${user.updatedAt}`,
-      updatedProfile: {
+      message: `Data successfully updated on ${user.updatedAt}`,
+      updatedData: {
         name: user.name,
         email: user.email,
         country: user.country
@@ -124,11 +124,11 @@ router.delete("/:id", async (req, res) => {
   try {
     const user = await User.deleteOne({_id: req.params.id});
     return res.status(200).json({
-        message: "user deleted!"
+        message: "data deleted!"
     });
   } catch (err) {
     if (err.name === "CastError") {
-      return res.status(404).json({message:"A user with this id does not exist!"});
+      return res.status(404).json({message:"Data with this id does not exist!"});
     } else {
     res.status(500).json({message: err.message});
       }

@@ -17,7 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(morgan('dev'));
 
-const { PORT : port } = process.env;
+const { PORT : localPort } = process.env;
 // connect to mongoDB
 (async() => {
   try {
@@ -47,4 +47,4 @@ app.use( (req, res, next) => {
   });
 });
 
-module.exports = {app, port};
+module.exports = {app, localPort};

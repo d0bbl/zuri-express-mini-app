@@ -1,9 +1,7 @@
-
-// console.log(port);
-// const port = process.env.PORT || 80;
-
 const http = require('http');
-const {app, port} = require('./app');
+const {app, localPort} = require('./app');
+
+const port = process.env.PORT || localPort;
 
 const server = http.createServer(app);
 
