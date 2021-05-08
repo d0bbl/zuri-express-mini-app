@@ -11,7 +11,7 @@ router.get("/", async (req, res) => {
         message: "You are yet to create data",
         request: {
           type: "POST",
-          url: "http://localhost:3000/create"
+          url: "https://zuri-data.herokuapp.com/"
         }
       });
     }
@@ -24,7 +24,7 @@ router.get("/", async (req, res) => {
           country: user.country,
           request: {
             type: "GET",
-            url: "http://localhost:3000/" + user._id
+            url: "https://zuri-data.herokuapp.com/" + user._id
           }
         }
       })
@@ -58,7 +58,7 @@ router.post(`/`, async (req, res) => {
             },
             request: {
               type: "GET",
-              url: "http://localhost:3000/" + user._id
+              url: "https://zuri-data.herokuapp.com/" + user._id
             }
           });
         }
@@ -110,7 +110,7 @@ router.put("/:id", async (req, res) => {
       },
       request: {
         type: "GET",
-        url: "http://localhost:3000/" + user._id
+        url: "https://zuri-data.herokuapp.com/" + user._id
       }
     });
   } catch (err) {
