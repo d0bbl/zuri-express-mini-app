@@ -1,0 +1,37 @@
+{
+  "name": "zuri-mini-profile-app",
+  "version": "1.0.0",
+  "description": "An express app to manage your profile with basic CRUD operations",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "dev": "nodemon server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dobbleXg/zuri-express-mini-app.git"
+  },
+  "keywords": [
+    "express",
+    "GET",
+    "UPDATE",
+    "DELETE",
+    "MONGODB",
+    "payload",
+    "database",
+    "mongoose"
+  ],
+  "author": "kenny",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dobbleXg/zuri-express-mini-app/issues"
+  },
+  "homepage": "https://github.com/dobbleXg/zuri-express-mini-app#readme",
+  "dependencies": {
+    "dotenv": "^9.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.7",
+    "morgan": "^1.10.0"
+  }
+}
