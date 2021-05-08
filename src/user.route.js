@@ -36,7 +36,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.post(`/create`, async (req, res) => {
+router.post(`/`, async (req, res) => {
   console.log(req.body);
   try {
     const user = await User.findOne({email: req.body.email});
