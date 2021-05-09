@@ -8,7 +8,7 @@ router.get("/", async (req, res) => {
     const users = await User.find().sort({createdAt: -1}).lean();
     if (users == "") {
       return res.status(404).json({
-        message: "You are yet to create data",
+        message: "Successfully connected to database!! You are yet to create data",
         request: {
           type: "POST",
           url: "https://zuri-data.herokuapp.com/"
@@ -16,6 +16,7 @@ router.get("/", async (req, res) => {
       });
     }
     res.status(200).json({
+      message: "Successfully connected to database!!",
       data: users.map(user => {
         return {
           id: user._id,
@@ -28,7 +29,7 @@ router.get("/", async (req, res) => {
           }
         }
       })
-    })
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json({error: err.message});

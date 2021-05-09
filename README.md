@@ -2,6 +2,11 @@
 # Project Title
 
 Express app with basic CRUD operations to manage your data
+
+### Hosted link
+
+https://zuri-data.herokuapp.com/
+
 ## API Reference
 
 #### Get all data
