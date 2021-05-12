@@ -35,16 +35,20 @@ const { PORT : localPort } = process.env;
 // app.use("/api", IdeaRoutes);
 app.use("/", UserRoutes);
 
-app.use( (req, res, next) => {
-  let error = new Error("Page Not Found");
-  error.status = 404;
-  next(error);
+app.use("*", (req, res) => {
+  res.status(404).json({message: "Page Not Found"});
 });
 
-app.use( (req, res, next) => {
-  res.status(error.status || 500).json({
-    message: error.message
-  });
-});
+// app.use( (req, res, next) => {
+//   let error = new Error("Page Not Found");
+//   error.status = 404;
+//   next(error);
+// });
+//
+// app.use( (req, res, next) => {
+//   res.status(error.status || 500).json({
+//     message: error.message
+//   });
+// });
 
 module.exports = {app, localPort};
