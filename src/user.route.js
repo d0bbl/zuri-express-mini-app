@@ -74,7 +74,6 @@ router.post(`/`, async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const user = await User.findById({_id: req.params.id});
-
     if (user == "") {
       return res.status(404).json({message: "No valid user found"});
     }
@@ -87,6 +86,9 @@ router.get("/:id", async (req, res) => {
       }
     });
   } catch (err) {
+    if (err.name === "CastError") {
+      return res.status(404).json({message:"Data with this id does not exist!"});
+    }
       res.status(500).json({message: err});
   }
 
@@ -115,6 +117,9 @@ router.put("/:id", async (req, res) => {
       }
     });
   } catch (err) {
+    if (err.name === "CastError") {
+      return res.status(404).json({message:"Data with this id does not exist!"});
+    }
     res.status(500).json({message: err.message});
   }
 
